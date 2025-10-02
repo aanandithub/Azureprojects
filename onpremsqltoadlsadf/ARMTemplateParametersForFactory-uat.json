@@ -1,0 +1,11 @@
+{
+  "factoryName": {
+    "value": "UAT-onpremsqltoadlsadf"
+  },
+  "AzureDataLakeStorage_LS_parameters_secretName": {
+    "value": "UATstorageaccountsecrets"
+  },
+  "AzureDataLakeStorage_LS_parameters_keyVaultName": {
+    "value": "onpremsqlserverkeyvault1 "
+  }
+}
