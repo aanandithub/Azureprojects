@@ -134,6 +134,33 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/onpremsqltoadlsds')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1onpremLS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "raw"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1onpremLS')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SqlServerTable1onpremds')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -190,12 +217,14 @@
 								"partitionOption": "None"
 							},
 							"sink": {
-								"type": "ParquetSink",
+								"type": "DelimitedTextSink",
 								"storeSettings": {
 									"type": "AzureBlobFSWriteSettings"
 								},
 								"formatSettings": {
-									"type": "ParquetWriteSettings"
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
 								}
 							},
 							"enableStaging": false,
@@ -217,7 +246,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "Parquet1_onpremadlsds",
+								"referenceName": "onpremsqltoadlsds",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -231,7 +260,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SqlServerTable1onpremds')]",
-				"[concat(variables('factoryId'), '/datasets/Parquet1_onpremadlsds')]"
+				"[concat(variables('factoryId'), '/datasets/onpremsqltoadlsds')]"
 			]
 		},
 		{
