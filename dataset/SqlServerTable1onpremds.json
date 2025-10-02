@@ -1,0 +1,26 @@
+{
+	"name": "SqlServerTable1onpremds",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer1onpremls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "testtable"
+		}
+	}
+}
