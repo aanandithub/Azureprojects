@@ -6,6 +6,6 @@
     "value": "UATstorageaccountsecrets"
   },
   "AzureDataLakeStorage_LS_parameters_keyVaultName": {
-    "value": "onpremsqlserverkeyvault1 "
+    "value": "onpremsqlserverkeyvault1"
   }
 }
