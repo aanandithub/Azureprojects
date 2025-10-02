@@ -1,11 +1,11 @@
 {
   "factoryName": {
-    "value": "adf-uat"
+    "value": "onpremsqltoadlsadf"
   },
   "AzureDataLakeStorage_LS_parameters_secretName": {
-    "value": "adls-key-uat"
+    "value": "devstorageaccountsecret"
   },
   "AzureDataLakeStorage_LS_parameters_keyVaultName": {
-    "value": "kv-uat"
+    "value": "onpremsqlserverkeyvault1"
   }
 }
