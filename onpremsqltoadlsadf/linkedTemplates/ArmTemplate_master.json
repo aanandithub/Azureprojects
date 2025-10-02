@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1onpremLS'"
 		},
+		"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://onpremstrgacc.dfs.core.windows.net/"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://onpremsqlserverkeyvault1.vault.azure.net/"
@@ -26,10 +30,6 @@
 		"SqlServer1onpremls_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adf_user"
-		},
-		"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://onpremstrgacc.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -61,11 +61,11 @@
 					"AzureDataLakeStorage1onpremLS_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage1onpremLS_accountKey')]"
 					},
-					"AzureKeyVault1_properties_typeProperties_baseUrl": {
-						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
-					},
 					"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1onpremLS_properties_typeProperties_url')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 					},
 					"SqlServer1onpremls_properties_typeProperties_server": {
 						"value": "[parameters('SqlServer1onpremls_properties_typeProperties_server')]"

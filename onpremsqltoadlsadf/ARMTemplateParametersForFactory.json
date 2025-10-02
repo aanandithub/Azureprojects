@@ -8,6 +8,9 @@
 		"AzureDataLakeStorage1onpremLS_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
+			"value": "https://onpremstrgacc.dfs.core.windows.net/"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://onpremsqlserverkeyvault1.vault.azure.net/"
 		},
@@ -19,9 +22,6 @@
 		},
 		"SqlServer1onpremls_properties_typeProperties_userName": {
 			"value": "adf_user"
-		},
-		"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
-			"value": "https://onpremstrgacc.dfs.core.windows.net/"
 		}
 	}
 }
