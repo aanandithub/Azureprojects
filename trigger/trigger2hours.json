@@ -1,0 +1,24 @@
+{
+	"name": "trigger2hours",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline_copysqlonprmtoadls",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 2,
+				"startTime": "2025-10-02T11:30:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
