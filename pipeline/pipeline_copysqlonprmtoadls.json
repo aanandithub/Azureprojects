@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data onprem",
+				"name": "Copy data onprems",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
