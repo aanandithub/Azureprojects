@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "onpremsqltoadlsadf"
 		},
-		"AzureDataLakeStorage1onpremLS_accountKey": {
-			"value": ""
-		},
 		"AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
 			"value": "https://onpremstrgacc.dfs.core.windows.net/"
 		},
