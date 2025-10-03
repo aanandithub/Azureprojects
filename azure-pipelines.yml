@@ -34,8 +34,8 @@ stages:
         resourceGroupName: 'UAT_onpremsqltoadlsrg'
         location: 'East US'
         templateLocation: 'Linked artifact'
-        csmFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplates/ARMTemplateForFactory.json'
-        csmParametersFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplates/RMTemplateParametersForFactory-uat.json'
+        csmFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplateForFactory.json'
+        csmParametersFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplateParametersForFactory-uat.json'
         deploymentMode: 'Incremental'
 
 - stage: DeployQA
@@ -60,7 +60,7 @@ stages:
 '
         location: 'East US'
         templateLocation: 'Linked artifact'
-        csmFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplates/ARMTemplateForFactory.json'
+        csmFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplateForFactory.json'
         csmParametersFile: '$(System.DefaultWorkingDirectory)/_aanandithub_Azureprojects/onpremsqltoadlsadf/ARMTemplateParametersForFactory-QA.json'
         deploymentMode: 'Incremental'
 
