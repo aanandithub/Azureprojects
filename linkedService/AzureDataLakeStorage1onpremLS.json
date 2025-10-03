@@ -3,7 +3,8 @@
 	"properties": {
 		"parameters": {
 			"secretName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "devstorageaccountsecret"
 			}
 		},
 		"annotations": [],
