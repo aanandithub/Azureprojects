@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "factoryName": {
-      "value": "QA-onpremsqltoadlsadf"
+      "value": "QA-onpremsqltoadladf"
     },
     "AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
       "value": "https://qaonpremstrgacc.dfs.core.windows.net/"
