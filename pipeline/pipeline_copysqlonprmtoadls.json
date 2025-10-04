@@ -56,6 +56,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"secretName": {
+				"type": "string",
+				"defaultValue": "devstorageaccountsecret"
+			}
+		},
 		"annotations": []
 	}
 }
