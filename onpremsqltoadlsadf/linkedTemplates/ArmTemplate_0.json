@@ -26,6 +26,10 @@
 		"SqlServer1onpremls_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adf_user"
+		},
+		"trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName": {
+			"type": "string",
+			"defaultValue": "devstorageaccountsecret"
 		}
 	},
 	"variables": {
@@ -62,7 +66,8 @@
 			"properties": {
 				"parameters": {
 					"secretName": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "@dataset().secretName"
 					}
 				},
 				"annotations": [],
@@ -181,7 +186,18 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureDataLakeStorage1onpremLS",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"secretName": {
+							"value": "@pipeline().parameters.secretName",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"secretName": {
+						"type": "string"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -259,13 +275,24 @@
 							{
 								"referenceName": "onpremsqltoadlsds",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"secretName": {
+										"value": "@pipeline().parameters.secretName",
+										"type": "Expression"
+									}
+								}
 							}
 						]
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"secretName": {
+						"type": "string",
+						"defaultValue": "devstorageaccountsecret"
+					}
 				},
 				"annotations": []
 			},
@@ -287,7 +314,9 @@
 							"referenceName": "pipeline_copysqlonprmtoadls",
 							"type": "PipelineReference"
 						},
-						"parameters": {}
+						"parameters": {
+							"secretName": "[parameters('trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName')]"
+						}
 					}
 				],
 				"type": "ScheduleTrigger",

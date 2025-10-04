@@ -27,6 +27,10 @@
 			"type": "string",
 			"defaultValue": "adf_user"
 		},
+		"trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName": {
+			"type": "string",
+			"defaultValue": "devstorageaccountsecret"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -68,6 +72,9 @@
 					},
 					"SqlServer1onpremls_properties_typeProperties_userName": {
 						"value": "[parameters('SqlServer1onpremls_properties_typeProperties_userName')]"
+					},
+					"trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName": {
+						"value": "[parameters('trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName')]"
 					}
 				}
 			},

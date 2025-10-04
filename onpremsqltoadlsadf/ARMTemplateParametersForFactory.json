@@ -19,6 +19,9 @@
 		},
 		"SqlServer1onpremls_properties_typeProperties_userName": {
 			"value": "adf_user"
+		},
+		"trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName": {
+			"value": "devstorageaccountsecret"
 		}
 	}
 }
