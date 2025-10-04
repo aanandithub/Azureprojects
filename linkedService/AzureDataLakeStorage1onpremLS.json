@@ -3,8 +3,7 @@
 	"properties": {
 		"parameters": {
 			"secretName": {
-				"type": "string",
-				"defaultValue": "@dataset().secretName"
+				"type": "string"
 			}
 		},
 		"annotations": [],
