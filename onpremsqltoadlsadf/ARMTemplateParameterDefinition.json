@@ -1,10 +1,1 @@
-{
-  "linkedService:AzureDataLakeStorage1onpremLS": {
-    "secretName": {
-      "type": "string",
-      "defaultValue": "devstorageaccountsecret",
-      "metadata": {
-        "description": "Secret name for accessing the storage account from Azure Key Vault"
-      }
-    }
-  }
+
