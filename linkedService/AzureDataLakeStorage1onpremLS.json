@@ -4,7 +4,7 @@
 		"parameters": {
 			"secretName": {
 				"type": "string",
-				"defaultValue": "devstorageaccountsecret"
+				"defaultValue": "@dataset().secretName"
 			}
 		},
 		"annotations": [],
