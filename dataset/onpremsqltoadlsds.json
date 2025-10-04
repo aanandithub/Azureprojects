@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"secretName": {
-					"value": "@pipeline().parameters.secretName",
+					"value": "@dataset().secretName",
 					"type": "Expression"
 				}
 			}
