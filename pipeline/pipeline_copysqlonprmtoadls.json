@@ -51,7 +51,13 @@
 				"outputs": [
 					{
 						"referenceName": "onpremsqltoadlsds",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"secretName": {
+								"value": "@pipeline().parameters.secretName",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
