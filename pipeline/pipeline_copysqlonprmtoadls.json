@@ -60,6 +60,72 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Web1success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data onprems",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Header": "{\n  \"Content-Type\": \"application/json\"\n}"
+					},
+					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
+					"body": {
+						"pipelineName": "@pipeline().Pipeline",
+						"activityName": "CopyData1",
+						"status": "Success",
+						"error": ""
+					}
+				}
+			},
+			{
+				"name": "Web1failed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data onprems",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Header": "{\n  \"Content-Type\": \"application/json\"\n}"
+					},
+					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
+					"body": {
+						"pipelineName": "@pipeline().Pipeline",
+						"activityName": "CopyData1",
+						"status": "Failed",
+						"error": "@{activity('CopyData1').error.message}"
+					}
+				}
 			}
 		],
 		"parameters": {
