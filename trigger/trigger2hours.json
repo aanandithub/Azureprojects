@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "pipeline_copysqlonprmtoadls",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"secretName": "devstorageaccountsecret"
 				}
 			}
 		],
