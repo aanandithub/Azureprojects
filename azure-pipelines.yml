@@ -19,7 +19,7 @@ stages:
   displayName: Deploy to Dev Environment
   jobs:
   - job: DeployADFUAT
-    displayName: Deploy ADF to Dev
+    displayName: Deploy ADF to UAT
     pool:
       Default
     #vmImage: 'ubuntu-latest'  # Or use your self-hosted agent pool here
@@ -50,14 +50,13 @@ stages:
     #Or your agent pool
     steps:
     - task: AzureResourceManagerTemplateDeployment@3
-      displayName: Deploy ARM Template to UAT
+      displayName: Deploy ARM Template to QA
       inputs:
         deploymentScope: 'Resource Group'
         azureResourceManagerConnection: 'Azure subscription 1 (0265c316-2e50-4da6-baf7-973ca1a21b0c)'
         subscriptionId: '0265c316-2e50-4da6-baf7-973ca1a21b0c'
         action: 'Create Or Update Resource Group'
-        resourceGroupName: 'QA_onpremsqltoadlsrg
-'
+        resourceGroupName: 'QA_onpremsqltoadlsrg'
         location: 'East US'
         templateLocation: 'Linked artifact'
         csmFile: 'onpremsqltoadlsadf/ARMTemplateForFactory.json'
