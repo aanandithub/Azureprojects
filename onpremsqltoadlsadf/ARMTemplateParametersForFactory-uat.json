@@ -13,6 +13,9 @@
       "value": "https://onpremsqlserverkeyvault1.vault.azure.net/"
 	  
     },
+	"AzureDataLakeStorage1onpremLS_secretName": {
+      "value": "UATstorageaccountsecrets"
+    },
     "SqlServer1onpremls_properties_typeProperties_server": {
       "value": "Anandabiwindowsserver"
     },
