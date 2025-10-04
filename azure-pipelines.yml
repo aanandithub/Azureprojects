@@ -16,7 +16,7 @@ trigger:
 
 stages:
 - stage: DeployUAT
-  displayName: Deploy to Dev Environment
+  displayName: Deploy to UAT Environment
   jobs:
   - job: DeployADFUAT
     displayName: Deploy ADF to UAT
