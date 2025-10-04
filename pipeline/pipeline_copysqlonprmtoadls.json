@@ -83,7 +83,7 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"\"Content-Type\": ": "\"application/json\""
+						"Headers": "{ \"Content-Type\": \"application/json\" }"
 					},
 					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
 					"body": {
@@ -116,7 +116,7 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"\"Content-Type\": ": "\"application/json\""
+						"Headers": "{ \"Content-Type\": \"application/json\" }"
 					},
 					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
 					"body": {
