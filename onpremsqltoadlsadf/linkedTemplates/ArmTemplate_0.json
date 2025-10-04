@@ -66,8 +66,7 @@
 			"properties": {
 				"parameters": {
 					"secretName": {
-						"type": "string",
-						"defaultValue": "@dataset().secretName"
+						"type": "string"
 					}
 				},
 				"annotations": [],
@@ -189,7 +188,7 @@
 					"type": "LinkedServiceReference",
 					"parameters": {
 						"secretName": {
-							"value": "@pipeline().parameters.secretName",
+							"value": "@dataset().secretName",
 							"type": "Expression"
 						}
 					}
