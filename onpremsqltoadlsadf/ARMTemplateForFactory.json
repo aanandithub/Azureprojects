@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "127.0.0.1"
 		},
+        "AzureDataLakeStorage1onpremLS_secretName": {
+            "type": "string",
+			"defaultvalue": "devstorageaccountsecret"
+    },
 		"SqlServer1onpremls_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "TestDB"
