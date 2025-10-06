@@ -1,0 +1,65 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+
+
+pool:
+  Default
+  #vmImage: ubuntu-latest
+
+trigger:
+- main
+- develop
+
+stages:
+- stage: DeployUAT
+  displayName: Deploy to Dev Environment
+  jobs:
+  - job: DeployADFUAT
+    displayName: Deploy ADF to Dev
+    pool:
+      Default
+    #vmImage: 'ubuntu-latest'  # Or use your self-hosted agent pool here
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: Deploy ARM Template to UAT
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'Azure subscription 1 (0265c316-2e50-4da6-baf7-973ca1a21b0c)'
+        subscriptionId: '0265c316-2e50-4da6-baf7-973ca1a21b0c'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'UAT_onpremsqltoadlsrg'
+        location: 'East US'
+        templateLocation: 'Linked artifact'
+        csmFile: 'onpremsqltoadlsadf/ARMTemplates/ARMTemplateForFactory.json'
+        csmParametersFile: 'onpremsqltoadlsadf/ARMTemplates/ARMTemplateParametersForFactory-uat.json'
+        deploymentMode: 'Incremental'
+
+- stage: DeployQA
+  displayName: Deploy to QA Environment
+  dependsOn: DeployUAT
+  condition: succeeded()
+  jobs:
+  - job: DeployADFQA
+    displayName: Deploy ADF to QA
+    pool: Default
+    #vmImage: 'ubuntu-latest' 
+    #Or your agent pool
+    steps:
+    - task: AzureResourceManagerTemplateDeployment@3
+      displayName: Deploy ARM Template to QA
+      inputs:
+        deploymentScope: 'Resource Group'
+        azureResourceManagerConnection: 'Azure subscription 1 (0265c316-2e50-4da6-baf7-973ca1a21b0c)'
+        subscriptionId: '0265c316-2e50-4da6-baf7-973ca1a21b0c'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'QA_onpremsqltoadlsrg'
+        location: 'East US'
+        templateLocation: 'Linked artifact'
+        csmFile: 'onpremsqltoadlsadf/ARMTemplates/ARMTemplateForFactory.json'
+        csmParametersFile: 'onpremsqltoadlsadf/ARMTemplateParametersForFactory-QA.json'
+        deploymentMode: 'Incremental'
+
