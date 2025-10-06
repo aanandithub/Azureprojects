@@ -357,37 +357,36 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger2hours')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline_copysqlonprmtoadls",
-							"type": "PipelineReference"
-						}
-						"parameters": {
-							"secretName": "[parameters('trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName')]"
-						}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Hour",
-						"interval": 2,
-						"startTime": "2025-10-02T11:30:00",
-						"timeZone": "India Standard Time"
-					}
+	"name": "[concat(parameters('factoryName'), '/trigger2hours')]",
+	"type": "Microsoft.DataFactory/factories/triggers",
+	"apiVersion": "2018-06-01",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline_copysqlonprmtoadls",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"secretName": "[parameters('trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName')]"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline_copysqlonprmtoadls')]"
-			]
-		},
-		
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 2,
+				"startTime": "2025-10-02T11:30:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	},
+	"dependsOn": [
+		"[concat(variables('factoryId'), '/pipelines/pipeline_copysqlonprmtoadls')]"
+	]
+}
 	]
 }
