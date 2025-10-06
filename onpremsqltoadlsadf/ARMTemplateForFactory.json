@@ -57,7 +57,7 @@
 						"typeProperties": {
 							"source": {
 								"type": "SqlServerSource",
-								"sqlReaderQuery": "select * from testtable",
+								"sqlReaderQuery": "select * from [dbo].[sales]",
 								"queryTimeout": "02:00:00",
 								"partitionOption": "None"
 							},
@@ -233,7 +233,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "testtable"
+					"table": "sales"
 				}
 			},
 			"dependsOn": [
@@ -265,7 +265,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "testdb.csv",
+						"fileName": "sales.csv",
 						"fileSystem": "raw"
 					},
 					"columnDelimiter": ",",
