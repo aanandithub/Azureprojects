@@ -368,7 +368,7 @@
 						"pipelineReference": {
 							"referenceName": "pipeline_copysqlonprmtoadls",
 							"type": "PipelineReference"
-						},
+						}
 						"parameters": {
 							"secretName": "[parameters('trigger2hours_properties_pipeline_copysqlonprmtoadls_parameters_secretName')]"
 						}
