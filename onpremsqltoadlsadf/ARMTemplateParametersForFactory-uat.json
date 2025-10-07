@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "factoryName": {
-      "value": "UAT-onpremsqltoadlsadf"
+      "value": "UATonpremsqltoadlsadf"
     },
     "AzureDataLakeStorage1onpremLS_properties_typeProperties_url": {
       "value": "https://uatonpremstrgacc.dfs.core.windows.net/"
