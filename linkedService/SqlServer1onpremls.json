@@ -1,0 +1,27 @@
+{
+	"name": "SqlServer1onpremls",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "127.0.0.1",
+			"database": "TestDB",
+			"encrypt": "mandatory",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "adf_user",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "scrtonprm"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SHIRforonprem",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

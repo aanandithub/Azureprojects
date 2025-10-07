@@ -1,0 +1,139 @@
+{
+	"name": "pipeline_copysqlonprmtoadls",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data onprems",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 4,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "select * from [dbo].[sales]",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable1onpremds",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "onpremsqltoadlsds",
+						"type": "DatasetReference",
+						"parameters": {
+							"secretName": {
+								"value": "@pipeline().parameters.secretName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Web1success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data onprems",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Headers": "{ \"Content-Type\": \"application/json\" }"
+					},
+					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
+					"body": {
+						"pipelineName": "@pipeline().Pipeline",
+						"activityName": "Copy data onprems",
+						"status": "Success",
+						"error": ""
+					}
+				}
+			},
+			{
+				"name": "Web1failed",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data onprems",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Headers": "{ \"Content-Type\": \"application/json\" }"
+					},
+					"url": "https://prod-86.eastus.logic.azure.com:443/workflows/44a4300a195c48e5aac7d36e1471f033/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ZWNhjSXcJ4TdrNsyLPwkDAt1UueKPvJCbKy7uVeFHzk",
+					"body": {
+						"pipelineName": "@pipeline().Pipeline",
+						"activityName": "Copy data onprems",
+						"status": "Failed",
+						"error": "@{activity('Copy data onprems').error.message}"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"secretName": {
+				"type": "string",
+				"defaultValue": "devstorageaccountsecret"
+			}
+		},
+		"annotations": []
+	}
+}
